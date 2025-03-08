@@ -1,0 +1,104 @@
+.sidebar-container {
+    display: flex;
+  }
+  
+  .sidebar {
+    width: 78;
+    height: 100vh;
+    background-color: #7236ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 0;
+    transition: width 0.3s ease-in-out;
+    border-radius: 10px;
+  }
+  
+  .profile-button {
+    margin-bottom: 16px;
+  }
+  
+  .profile-avatar {
+    width: 55px;
+    height: 55px;
+    transition: all 0.3s ease;
+  }
+  
+  .sidebar-divider {
+    width: 60%;
+    background-color: white;
+    margin-bottom: 16px;
+    display: none;
+  }
+  
+  .sidebar-icons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    gap: 20px;
+  }
+  
+  .sidebar-icon {
+    color: white;
+    margin-bottom: 16px;
+    font-size: 2rem;
+    transition: transform 0.2s ease;
+  }
+  
+  .sidebar-icon:hover {
+    transform: scale(1.1);
+  }
+  
+  .drawer-content {
+    width: 250px;
+    text-align: center;
+    padding: 24px;
+  }
+  
+  .drawer-avatar {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 8px;
+  }
+  
+  .drawer-username {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .drawer-email {
+    color: gray;
+  }
+  
+  /* 📌 Responsive Styles */
+  @media (max-width: 600px) {
+    .sidebar {
+      width: 70px;
+    }
+  
+    .profile-avatar {
+      width: 45px;
+      height: 45px;
+    }
+  
+    .sidebar-icon {
+      font-size: 1.8rem;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .sidebar {
+      width: 60px;
+    }
+  
+    .profile-avatar {
+      width: 40px;
+      height: 40px;
+    }
+  
+    .sidebar-icon {
+      font-size: 1.6rem;
+    }
+  }
+  
