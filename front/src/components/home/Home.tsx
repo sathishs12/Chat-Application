@@ -141,6 +141,7 @@ const Home: React.FC<HomeProps> = ({ setActiveView }) => {
             <Button
               variant="contained"
               color="primary"
+              sx={{backgroundColor:"rebeccapurple"}}
               onClick={() => setActiveView("chat")}
             >
               Start Chat

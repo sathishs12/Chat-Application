@@ -55,7 +55,7 @@ const ChatList: React.FC<ChatListProps> = ({ onSelectChat }) => {
       />
 
       <Paper sx={{ p: 2, mb: 2, borderRadius: 3 }}>
-        <Typography variant="subtitle1" fontWeight="bold" sx={{ mb: 1 }}>
+        <Typography variant="subtitle1" fontWeight="bold" sx={{ mb: 1, fontFamily: "cursive", }}>
           Groups
         </Typography>
         <Box sx={{ maxHeight: 180, overflowY: "auto" }}>
@@ -74,7 +74,7 @@ const ChatList: React.FC<ChatListProps> = ({ onSelectChat }) => {
                   "&:last-child": { borderBottom: "none" },
                 }}
               >
-                <Box sx={{ display: "flex", alignItems: "center" }}>
+                <Box sx={{ display: "flex", alignItems: "center", fontFamily: "cursive", }}>
                   <Avatar src={group.image} alt={group.name} sx={{ width: 45, height: 45, mr: 2 }} />
                   <Box>
                     <Typography fontWeight="bold">{group.name}</Typography>
@@ -93,7 +93,7 @@ const ChatList: React.FC<ChatListProps> = ({ onSelectChat }) => {
       </Paper>
 
       <Paper sx={{ p: 2, borderRadius: 3 }}>
-        <Typography variant="subtitle1" fontWeight="bold" sx={{ mb: 1 }}>
+        <Typography variant="subtitle1" fontWeight="bold" sx={{ mb: 1, fontFamily: "cursive", }}>
           People
         </Typography>
         <Box sx={{ maxHeight: 294, overflowY: "auto" }}>
@@ -112,7 +112,7 @@ const ChatList: React.FC<ChatListProps> = ({ onSelectChat }) => {
                   "&:last-child": { borderBottom: "none" },
                 }}
               >
-                <Box sx={{ display: "flex", alignItems: "center" }}>
+                <Box sx={{ display: "flex", alignItems: "center", fontFamily: "cursive",  }}>
                   <Avatar src={person.image} alt={person.name} sx={{ width: 45, height: 45, mr: 2 }} />
                   <Box>
                     <Typography fontWeight="bold">{person.name}</Typography>

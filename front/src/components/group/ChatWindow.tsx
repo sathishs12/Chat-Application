@@ -26,10 +26,10 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ selectedChat }) => {
             }}>
                 <Typography
                     sx={{
-                        fontSize: "24px",
+                        fontSize: "34px",
                         fontWeight: "bold",
-                        fontFamily: "Arial, sans-serif",
-                        color: "#333",
+                        fontFamily: "cursive",
+                        color: "rebeccapurple",
                         textAlign: "center"
                     }}
                 >
@@ -48,7 +48,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ selectedChat }) => {
             <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
                 <Avatar src={selectedChat.chat.image} sx={{ width: 40, height: 40, mr: 2 }} />
                 <Box>
-                    <Typography variant="h6" fontWeight="bold">{selectedChat.chat.name}</Typography>
+                    <Typography variant="h6" fontWeight="bold" sx={{fontFamily: "cursive",}}>{selectedChat.chat.name}</Typography>
                     <Box sx={{ display: "flex", alignItems: "center" }}>
                         <FiberManualRecordIcon sx={{ fontSize: 12, color: selectedChat.chat.isOnline ? "green" : "gray", mr: 1 }} />
                         <Typography variant="body2" color="textSecondary">
