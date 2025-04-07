@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Box, TextField, Typography, Paper, Avatar, Badge } from "@mui/material";
 import DoneAllIcon from "@mui/icons-material/DoneAll";
+import { motion } from "framer-motion";
 
 export interface ChatItem {
   id: number;
@@ -34,7 +35,6 @@ const ChatList: React.FC<ChatListProps> = ({ onSelectChat }) => {
     { id: 7, name: "Sanya", message: "Hey there!", time: "Yesterday, 8:30 AM", image: "https://via.placeholder.com/50", seen: true, isOnline: false },
   ];
 
-  // Filter groups and people based on search
   const filteredGroups = groups.filter((group) =>
     group.name.toLowerCase().includes(search.toLowerCase())
   );
@@ -55,34 +55,41 @@ const ChatList: React.FC<ChatListProps> = ({ onSelectChat }) => {
       />
 
       <Paper sx={{ p: 2, mb: 2, borderRadius: 3 }}>
-        <Typography variant="subtitle1" fontWeight="bold" sx={{ mb: 1, fontFamily: "cursive", }}>
+        <Typography variant="subtitle1" fontWeight="bold" sx={{ mb: 1, fontFamily: "cursive" }}>
           Groups
         </Typography>
         <Box sx={{ maxHeight: 180, overflowY: "auto" }}>
           {filteredGroups.length > 0 ? (
             filteredGroups.map((group) => (
-              <Box
+              <motion.div
                 key={group.id}
-                onClick={() => onSelectChat(group, "group")}
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  p: 1,
-                  cursor: "pointer",
-                  borderBottom: "1px solid #E0E0E0",
-                  "&:last-child": { borderBottom: "none" },
-                }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                whileHover={{ scale: 1.02 }}
               >
-                <Box sx={{ display: "flex", alignItems: "center", fontFamily: "cursive", }}>
-                  <Avatar src={group.image} alt={group.name} sx={{ width: 45, height: 45, mr: 2 }} />
-                  <Box>
-                    <Typography fontWeight="bold">{group.name}</Typography>
-                    <Typography variant="body2" color="text.secondary">{group.message}</Typography>
+                <Box
+                  onClick={() => onSelectChat(group, "group")}
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    p: 1,
+                    cursor: "pointer",
+                    borderBottom: "1px solid #E0E0E0",
+                    "&:last-child": { borderBottom: "none" },
+                  }}
+                >
+                  <Box sx={{ display: "flex", alignItems: "center", fontFamily: "cursive" }}>
+                    <Avatar src={group.image} alt={group.name} sx={{ width: 45, height: 45, mr: 2 }} />
+                    <Box>
+                      <Typography fontWeight="bold">{group.name}</Typography>
+                      <Typography variant="body2" color="text.secondary">{group.message}</Typography>
+                    </Box>
                   </Box>
+                  <Typography variant="caption" color="text.secondary">{group.time}</Typography>
                 </Box>
-                <Typography variant="caption" color="text.secondary">{group.time}</Typography>
-              </Box>
+              </motion.div>
             ))
           ) : (
             <Typography variant="body2" color="text.secondary">
@@ -93,39 +100,46 @@ const ChatList: React.FC<ChatListProps> = ({ onSelectChat }) => {
       </Paper>
 
       <Paper sx={{ p: 2, borderRadius: 3 }}>
-        <Typography variant="subtitle1" fontWeight="bold" sx={{ mb: 1, fontFamily: "cursive", }}>
+        <Typography variant="subtitle1" fontWeight="bold" sx={{ mb: 1, fontFamily: "cursive" }}>
           People
         </Typography>
         <Box sx={{ maxHeight: 294, overflowY: "auto" }}>
           {filteredPeople.length > 0 ? (
             filteredPeople.map((person) => (
-              <Box
+              <motion.div
                 key={person.id}
-                onClick={() => onSelectChat(person, "person")}
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  p: 1,
-                  cursor: "pointer",
-                  borderBottom: "1px solid #E0E0E0",
-                  "&:last-child": { borderBottom: "none" },
-                }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                whileHover={{ scale: 1.02 }}
               >
-                <Box sx={{ display: "flex", alignItems: "center", fontFamily: "cursive",  }}>
-                  <Avatar src={person.image} alt={person.name} sx={{ width: 45, height: 45, mr: 2 }} />
-                  <Box>
-                    <Typography fontWeight="bold">{person.name}</Typography>
-                    <Typography variant="body2" color="text.secondary">{person.message}</Typography>
+                <Box
+                  onClick={() => onSelectChat(person, "person")}
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    p: 1,
+                    cursor: "pointer",
+                    borderBottom: "1px solid #E0E0E0",
+                    "&:last-child": { borderBottom: "none" },
+                  }}
+                >
+                  <Box sx={{ display: "flex", alignItems: "center", fontFamily: "cursive" }}>
+                    <Avatar src={person.image} alt={person.name} sx={{ width: 45, height: 45, mr: 2 }} />
+                    <Box>
+                      <Typography fontWeight="bold">{person.name}</Typography>
+                      <Typography variant="body2" color="text.secondary">{person.message}</Typography>
+                    </Box>
+                  </Box>
+                  <Box sx={{ display: "flex", alignItems: "center" }}>
+                    <Typography variant="caption" color="text.secondary" sx={{ mr: 1 }}>
+                      {person.time}
+                    </Typography>
+                    {person.seen ? <DoneAllIcon sx={{ color: "#4CAF50", fontSize: 16 }} /> : <Badge color="error" variant="dot" />}
                   </Box>
                 </Box>
-                <Box sx={{ display: "flex", alignItems: "center" }}>
-                  <Typography variant="caption" color="text.secondary" sx={{ mr: 1 }}>
-                    {person.time}
-                  </Typography>
-                  {person.seen ? <DoneAllIcon sx={{ color: "#4CAF50", fontSize: 16 }} /> : <Badge color="error" variant="dot" />}
-                </Box>
-              </Box>
+              </motion.div>
             ))
           ) : (
             <Typography variant="body2" color="text.secondary">
